@@ -1,0 +1,10 @@
+#!/bin/sh
+compiler=$(which sass)
+if [ ${?} -ne 0 ]; then
+   echo "The sass compiler was not found on \$PATH."
+   exit 1
+else
+    set -e
+    mkdir -p dist/
+    ${compiler} --no-source-map --style expanded src/tail.scss dist/subset.css
+fi
